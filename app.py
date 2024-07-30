@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, request, url_for
+from flask import Flask, render_template, flash, redirect, request, url_for # type: ignore
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'sua-palavra-secreta'
@@ -36,3 +36,11 @@ def autenticar():
         flash('Tente novamente', 'warning')
         return redirect(url_for('login'))
         #return redirect('/login')
+
+
+@app.route('/cadastro_usuarios', methods = ['GET','POST'])
+def cadastro_usuarios():
+    if request.method=='GET':
+        return render_template('cadastro_usuarios.html')
+    else:
+        return 'Você submeteu o formulário'
